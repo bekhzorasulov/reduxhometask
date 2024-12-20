@@ -32,7 +32,7 @@ function Register() {
       !trimmedPassword ||
       !trimmedRepeatPassword
     ) {
-      toast.warning("At least one field is not filled!");
+      toast.warning("Please fill all the fildes!");
       return;
     }
 
