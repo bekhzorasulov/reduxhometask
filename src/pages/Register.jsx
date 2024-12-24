@@ -12,11 +12,6 @@ function Register() {
     repeatpassword: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, password, repeatpassword } = formData;
@@ -32,12 +27,16 @@ function Register() {
       !trimmedPassword ||
       !trimmedRepeatPassword
     ) {
-      toast.warning("Please fill all the fildes!");
+      toast.warning("Please fill all the fields!");
       return;
     }
 
-    // Success case
     toast.success("Registration successful!");
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -46,6 +45,7 @@ function Register() {
         <h2 className="text-4xl text-center mb-5 font-bold">Register</h2>
         <FormInput
           type="text"
+          name="name"
           placeholder="Name"
           label="Name"
           value={formData.name}
@@ -53,6 +53,7 @@ function Register() {
         />
         <FormInput
           type="email"
+          name="email"
           placeholder="Email"
           label="Email"
           value={formData.email}
@@ -60,6 +61,7 @@ function Register() {
         />
         <FormInput
           type="password"
+          name="password"
           placeholder="Password"
           label="Password"
           value={formData.password}
@@ -67,6 +69,8 @@ function Register() {
         />
         <FormInput
           type="password"
+          name="repeatpassword"
+          s
           placeholder="Repeat password"
           label="Repeat Password"
           value={formData.repeatpassword}
@@ -79,7 +83,7 @@ function Register() {
         </div>
         <div className="text-center">
           <p>
-            If you have account,{" "}
+            If you have an account,{" "}
             <Link className="link link-success" to="/login">
               Log In
             </Link>
